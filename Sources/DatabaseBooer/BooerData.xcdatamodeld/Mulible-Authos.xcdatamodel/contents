@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AuthorDB" representedClassName="DatabaseBooer.AuthorDB" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="authorBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BooksDB" inverseName="bookAuthos" inverseEntity="BooksDB"/>
+    </entity>
+    <entity name="BookProgressDB" representedClassName="BookProgressDB" syncable="YES" codeGenerationType="class">
+        <attribute name="bookID" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="pages" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BooksDB" inverseName="bookProgress" inverseEntity="BooksDB"/>
+    </entity>
+    <entity name="BooksDB" representedClassName="DatabaseBooer.BooksDB" syncable="YES" codeGenerationType="class">
+        <attribute name="coverSmall" attributeType="String"/>
+        <attribute name="coverThumbnail" attributeType="String" defaultValueString=""/>
+        <attribute name="descriptionText" attributeType="String" defaultValueString=""/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="pages" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="publisher" attributeType="String" defaultValueString=""/>
+        <attribute name="subtitle" attributeType="String" defaultValueString=""/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
+        <relationship name="bookAuthos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AuthorDB" inverseName="authorBooks" inverseEntity="AuthorDB"/>
+        <relationship name="bookChallenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChallengeBookDB" inverseName="challengeBook" inverseEntity="ChallengeBookDB"/>
+        <relationship name="bookIntervallChallenges" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChallengeIntervallPages" inverseName="book" inverseEntity="ChallengeIntervallPages"/>
+        <relationship name="bookProgress" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookProgressDB" inverseName="book" inverseEntity="BookProgressDB"/>
+    </entity>
+    <entity name="ChallengeBookDB" representedClassName="ChallengeBookDB" syncable="YES" codeGenerationType="class">
+        <attribute name="bookId" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="typeID" optional="YES" attributeType="String"/>
+        <relationship name="challengeBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BooksDB" inverseName="bookChallenge" inverseEntity="BooksDB"/>
+    </entity>
+    <entity name="ChallengeEndDate" representedClassName="ChallengeEndDate" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ChallengeIntervallPages" representedClassName="ChallengeIntervallPages" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="intervallValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pages" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BooksDB" inverseName="bookIntervallChallenges" inverseEntity="BooksDB"/>
+    </entity>
+    <entity name="ChallengeReadTime" representedClassName="ChallengeReadTime" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ChallengeTypeDB" representedClassName="ChallengeTypeDB" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="typeID" optional="YES" attributeType="String"/>
+    </entity>
+</model>

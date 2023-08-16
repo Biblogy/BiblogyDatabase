@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21277" systemVersion="22A5342f" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AuthorDB" representedClassName="DatabaseBooer.AuthorDB" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="authorBooks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BooksDB" inverseName="bookAuthos" inverseEntity="BooksDB"/>
+    </entity>
+    <entity name="BooksDB" representedClassName="DatabaseBooer.BooksDB" syncable="YES" codeGenerationType="class">
+        <attribute name="coverSmall" attributeType="String"/>
+        <attribute name="coverThumbnail" attributeType="String" defaultValueString=""/>
+        <attribute name="descriptionText" attributeType="String" defaultValueString=""/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="pages" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="publisher" attributeType="String" defaultValueString=""/>
+        <attribute name="subtitle" attributeType="String" defaultValueString=""/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
+        <relationship name="bookAuthos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AuthorDB" inverseName="authorBooks" inverseEntity="AuthorDB"/>
+    </entity>
+</model>
